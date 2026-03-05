@@ -1,5 +1,5 @@
-# 📱 Claude Mobile
-### Claude Code على هاتف Android — خفيف، سريع، بدون نماذج محلية
+# 📱 RiseCode
+### Claude Code on Android — Lightweight, Fast, No Local AI Models Required
 
 <div align="center">
 
@@ -7,155 +7,211 @@
 ![Platform](https://img.shields.io/badge/platform-Android-green)
 ![Size](https://img.shields.io/badge/size-~230MB-orange)
 ![License](https://img.shields.io/badge/license-MIT-purple)
+![Author](https://img.shields.io/badge/author-swordenkisk-black)
 
 </div>
 
 ---
 
-## 💡 الفكرة
+## 🧠 The Idea
 
-بدلاً من تشغيل نموذج AI ضخم على الهاتف (يحتاج عشرات الجيجابايتات)، يستخدم **Claude Mobile** نهجاً أذكى:
+Most AI-on-mobile solutions require downloading massive models (10–70GB) that drain your RAM and storage.
+
+**In3Pro takes a smarter approach:**
 
 ```
-هاتفك  →  Client خفيف (~230MB)  →  Anthropic API  →  Claude
+Your Phone  →  Lightweight Client (~230MB)  →  Anthropic API  →  Claude
 ```
 
-هاتفك يعمل كـ **terminal ذكي** يتصل مباشرة بخوادم Anthropic — لا نماذج محلية، لا استهلاك RAM، فقط قوة Claude الكاملة!
+Your phone acts as an **intelligent terminal** that connects directly to Anthropic's servers.
+No local models. No RAM overload. Full Claude power — in your pocket.
 
 ---
 
-## ⚡ متطلبات
+## ✨ Features
 
-- هاتف Android (5.0+)
-- تطبيق **Termux** (من F-Droid)
-- اتصال إنترنت
-- **Anthropic API Key** (من console.anthropic.com)
-- مساحة: ~230MB فقط ✅
-
----
-
-## 🚀 التثبيت السريع
-
-### 1. تثبيت Termux
-```
-حمّل Termux من F-Droid (ليس Play Store)
-https://f-droid.org/packages/com.termux/
-```
-
-### 2. تشغيل Bootstrap
-افتح Termux وانسخ هذا الأمر:
-```bash
-curl -sL https://raw.githubusercontent.com/YOUR_USERNAME/claude-mobile/main/termux/bootstrap.sh | bash
-```
-
-### 3. إعداد API Key
-```bash
-claude config set apiKey YOUR_API_KEY
-```
-
-### 4. ابدأ البرمجة! 🎉
-```bash
-claude "ساعدني في بناء تطبيق Python"
-```
+- ⚡ **One-command install** — fully automated setup via Termux
+- 🌐 **Direct API connection** — always using the latest Claude models
+- 🖥️ **Server mode** — expose Claude Code as a local HTTP server on your WiFi
+- 📁 **Project manager** — create and navigate projects instantly
+- 🐚 **Pre-configured shell** — Zsh + Oh My Zsh ready out of the box
+- 💾 **Only ~230MB** — fits comfortably on low-storage devices
+- 🔒 **Your data, your key** — uses your own Anthropic API Key
 
 ---
 
-## 📂 هيكل المشروع
+## 📋 Requirements
+
+| Requirement | Details |
+|------------|---------|
+| Device | Android 5.0+ |
+| App | Termux (from F-Droid) |
+| Storage | ~230MB free |
+| Internet | Wi-Fi or Mobile Data |
+| API Key | Anthropic API Key |
+
+---
+
+## 🚀 Quick Install
+
+### Step 1 — Install Termux
+> ⚠️ Download from **F-Droid only** — the Play Store version is outdated.
+
+🔗 https://f-droid.org/packages/com.termux/
+
+### Step 2 — Run Bootstrap
+Open Termux and paste this command:
+
+```bash
+curl -sL https://raw.githubusercontent.com/swordenkisk/Raisecode/main/termux/bootstrap.sh | bash
+```
+
+### Step 3 — Set Your API Key
+```bash
+export ANTHROPIC_API_KEY="sk-ant-your-key-here"
+echo "export ANTHROPIC_API_KEY='sk-ant-your-key-here'" >> ~/.zshrc
+```
+
+> Get your API key at: https://console.anthropic.com
+
+### Step 4 — Start Coding! 🎉
+```bash
+claude "Help me build a Python script"
+```
+
+---
+
+## 📂 Project Structure
 
 ```
-claude-mobile/
+In3Pro/
 ├── 📄 README.md
+├── 📄 LICENSE
 ├── 📁 termux/
-│   └── bootstrap.sh      # سكريبت التثبيت الرئيسي
+│   └── bootstrap.sh          # Automated one-command installer
 ├── 📁 scripts/
-│   ├── server.sh          # وضع الـ Server المحلي
-│   └── new_project.sh     # إنشاء مشروع جديد
+│   ├── server.sh             # Local HTTP server mode
+│   └── new_project.sh        # Quick project scaffolding
 ├── 📁 config/
-│   └── .claude-mobile.yml # إعدادات افتراضية
+│   └── .in3pro.yml           # Default configuration
 └── 📁 docs/
-    ├── SETUP.md
-    └── TROUBLESHOOT.md
+    └── SETUP.md              # Full setup guide
 ```
 
 ---
 
-## 🛠️ الأوامر المتاحة
+## 🛠️ Available Commands
 
-| الأمر | الوظيفة |
-|-------|---------|
-| `claude "سؤال"` | سؤال مباشر لـ Claude |
-| `claude .` | فتح Claude Code في المجلد الحالي |
-| `newproject` | إنشاء مشروع جديد |
-| `bash server.sh` | تشغيل وضع الـ Server |
-| `projects` | الانتقال لمجلد المشاريع |
+| Command | Description |
+|---------|-------------|
+| `claude "question"` | Ask Claude directly |
+| `claude .` | Open Claude Code in current directory |
+| `newproject` | Scaffold a new project interactively |
+| `bash server.sh` | Start local server mode |
+| `projects` | Navigate to your projects folder |
 
 ---
 
-## 🌐 وضع الـ Server
+## 🌐 Server Mode
 
-يمكنك تشغيل Claude Mobile كـ **server محلي** يمكن الوصول إليه من أي جهاز على نفس الشبكة:
+Run In3Pro as a **local HTTP server** accessible from any device on your network:
 
 ```bash
-bash ~/claude-mobile/scripts/server.sh
+bash ~/Risecode/scripts/server.sh
 ```
 
-ثم من أي جهاز آخر:
+Then from any device on the same Wi-Fi:
+
 ```bash
-curl -X POST http://IP_هاتفك:8765/ask \
+# Health check
+curl http://YOUR_PHONE_IP:8765/health
+
+# Ask Claude
+curl -X POST http://YOUR_PHONE_IP:8765/ask \
   -H "Content-Type: application/json" \
-  -d '{"prompt": "مرحباً Claude!"}'
+  -d '{"prompt": "Hello Claude!"}'
 ```
 
 ---
 
-## 📦 ما يُثبَّت (المساحة الكاملة)
+## 📦 What Gets Installed
 
-| المكون | الحجم |
-|--------|------|
-| Termux + base | ~80 MB |
+| Component | Size |
+|-----------|------|
+| Termux base | ~80 MB |
 | Node.js | ~55 MB |
 | Claude Code CLI | ~35 MB |
-| Git + أدوات | ~45 MB |
-| Python (للـ server) | ~15 MB |
-| **المجموع** | **~230 MB** ✅ |
+| Git + tools | ~45 MB |
+| Python (server) | ~15 MB |
+| **Total** | **~230 MB** ✅ |
 
 ---
 
-## 🔧 استكشاف الأخطاء
+## 🔧 Troubleshooting
 
-**مشكلة: `claude: command not found`**
+**`claude: command not found`**
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
 
-**مشكلة: خطأ في API Key**
+**API Key error**
 ```bash
 export ANTHROPIC_API_KEY="your-key-here"
 ```
 
-**مشكلة: بطء الاتصال**
-- تأكد من اتصال WiFi قوي
-- جرب شبكة مختلفة
+**Slow connection**
+- Switch to a stable Wi-Fi network
+- Check your Anthropic API usage limits at console.anthropic.com
+
+**Storage permission denied**
+```bash
+termux-setup-storage
+```
 
 ---
 
-## 🤝 المساهمة
+## 🗺️ Roadmap
 
-هذا المشروع مفتوح للجميع! 
-- افتح Issue لأي مشكلة
-- أرسل Pull Request لتحسين الكود
-- شارك الفكرة مع المطورين العرب 🌍
+- [ ] v1.1 — Offline mode with lightweight local fallback
+- [ ] v1.2 — In3Pro GUI app (Android native wrapper)
+- [ ] v1.3 — Multi-device sync via server mode
+- [ ] v2.0 — Full NetHunter-style environment bundle
 
 ---
 
-## 📄 الرخصة
+## 🤝 Contributing
 
-MIT License — استخدم، عدّل، وشارك بحرية.
+Contributions are welcome from everyone!
+
+1. Fork the repository
+2. Create your branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m "Add: your feature"`
+4. Push to the branch: `git push origin feature/your-feature`
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+MIT License — Copyright (c) 2026 [swordenkisk](https://github.com/swordenkisk)
+
+See [LICENSE](./LICENSE) for full details.
+
+---
+
+## 👤 Author
+
+**swordenkisk**
+> Inventor | AI Researcher | Software Architect
+
+🔗 GitHub: https://github.com/swordenkisk
 
 ---
 
 <div align="center">
-  Made with ❤️ for Arab Developers
-  
-  **"البرمجة في جيبك"** 📱
+
+**"The power of Claude. The freedom of mobile."** 📱
+
+⭐ Star this repo if you find it useful!
+
 </div>
