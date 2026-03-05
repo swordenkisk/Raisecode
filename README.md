@@ -93,7 +93,7 @@ In3Pro/
 │   ├── server.sh             # Local HTTP server mode
 │   └── new_project.sh        # Quick project scaffolding
 ├── 📁 config/
-│   └── .in3pro.yml           # Default configuration
+│   └── .Raisecode.yml           # Default configuration
 └── 📁 docs/
     └── SETUP.md              # Full setup guide
 ```
